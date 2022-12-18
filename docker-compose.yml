@@ -1,0 +1,52 @@
+services:
+  frontend:
+    container_name: frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+
+  fill_db:
+    container_name: fill_db
+    build:
+      context: ./fill_db
+      # dockerfile
+      dockerfile: Dockerfile
+    # networks:
+    #   - intra
+    depends_on:
+      - mongo_db
+
+  mongo_db:
+    container_name: database
+    build:
+      dockerfile: Dockerfile.mongo
+    ports:
+      - 27017:27017
+    # access the db from outside the docker
+    volumes:
+      - mongo_db:/data/db
+    # networks:
+    #   - intra
+
+  indexer:
+    container_name: indexer
+    build:
+      context: ./indexer
+      dockerfile: Dockerfile
+    depends_on:
+      - mongo_db
+
+  lfb-back:
+    container_name: lfb-back
+    build:
+      context: ./lfb-back
+      dockerfile: Dockerfile
+    ports:
+      - 8000:8000
+    depends_on:
+      - mongo_db
+
+volumes:
+  mongo_db: {}
