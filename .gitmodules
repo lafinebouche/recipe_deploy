@@ -1,9 +1,9 @@
 [submodule "indexer"]
 	path = indexer
-	url = https://github.com/lafinebouche/indexer.git
+	url = git@github.com:lafinebouche/indexer.git
 [submodule "lfb-back"]
 	path = lfb-back
-	url = https://github.com/lafinebouche/lfb-back.git
+	url = git@github.com:lafinebouche/lfb-back.git
 [submodule "frontend"]
 	path = frontend
 	url = git@github.com:lafinebouche/frontend.git
