@@ -37,6 +37,7 @@ services:
       dockerfile: Dockerfile
     depends_on:
       - mongo_db
+      - fill_db
 
   lfb-back:
     container_name: lfb-back
