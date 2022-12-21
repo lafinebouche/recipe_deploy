@@ -5,6 +5,13 @@ services:
       context: ./frontend
       dockerfile: Dockerfile
     ports:
+      - 443:3000
+
+  redirects:
+    container_name: redirect
+    build:
+      dockerfile: Dockerfile.redirect
+    ports:
       - 80:3000
 
   fill_db:

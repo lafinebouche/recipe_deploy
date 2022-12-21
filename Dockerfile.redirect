@@ -1,0 +1,7 @@
+# use node 16 image
+FROM node:16.15.1-alpine
+
+# # expose port
+EXPOSE 3000
+
+CMD ["/bin/sh", "-c", "npx serve-redirect --port 3000 --target https://www.lafinebouche.xyz"]
